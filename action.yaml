@@ -18,8 +18,10 @@ runs:
     - name: Bruno - install
       run: npm install -g @usebruno/cli@1.16.0
       shell: bash
+    - name: Checkout repository
+      use: actions/checkout@v4
     - name: Move to input directory
-      run: ls -la && cd ${{ inputs.directory }}
+      run: cd ${{ inputs.directory }}
       shell: bash
     - name: Bruno - Run collection
       id: bruno_run
