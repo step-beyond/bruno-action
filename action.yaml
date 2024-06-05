@@ -5,14 +5,21 @@ inputs:
     description: 'Directory where your API collection resides'
     required: true
     default: '/.'
+  environment:
+    description: 'Environment file'
+    required: false
+  output-type:
+    description: 'Whether the output is written to console or as a PR comment'
+    required: false
+    default: 'console'
 runs:
   using: "composite"
   steps:
     - name: Bruno - install
-        run: npm install -g @usebruno/cli
+        run: npm install -g @usebruno/cli@1.16.0
     - name: Bruno - Run collection
       id: bruno_run
       working-directory: ${{ inputs.directory }}
-      run: bru run
+      run: bru run --env ${{ inputs.environment }}
           
 
