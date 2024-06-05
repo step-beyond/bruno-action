@@ -42,6 +42,7 @@ runs:
         body-includes: Build output
 
     - name: Bruno - Create comment
+      if: ${{ inputs.output-type == 'pr' }}
       uses: peter-evans/create-or-update-comment@v4
       env:
         BRUNO_OUTPUT: "Output ${{ env.bruno_output }}"
