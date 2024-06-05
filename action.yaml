@@ -22,7 +22,6 @@ runs:
       run: npm install -g @usebruno/cli@1.16.0
     - name: Bruno - Run collection
       id: bruno_run
-      working-directory: ${{ inputs.directory }}
-      run: bru run --env ${{ inputs.environment }}
+      run: bru run ${{ inputs.directory }} --env ${{ inputs.environment }}
           
 
