@@ -26,6 +26,6 @@ runs:
     - name: Bruno - Run collection
       id: bruno_run
       shell: bash
-      run: bru run --env ${{ inputs.environment }}
+      run: bru run
           
 
