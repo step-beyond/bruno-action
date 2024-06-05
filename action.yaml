@@ -1,8 +1,5 @@
 name: 'Bruno Action'
 description: 'The Action to run Bruno API Collections'
-defaults:
-  run:
-    shell: bash
 inputs:
   directory:  # id of input
     description: 'Directory where your API collection resides'
@@ -20,8 +17,10 @@ runs:
   steps:
     - name: Bruno - install
       run: npm install -g @usebruno/cli@1.16.0
+      shell: bash
     - name: Bruno - Run collection
       id: bruno_run
+      shell: bash
       run: bru run ${{ inputs.directory }} --env ${{ inputs.environment }}
           
 
