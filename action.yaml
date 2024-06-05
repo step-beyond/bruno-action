@@ -20,11 +20,36 @@ runs:
       shell: bash
     - name: Checkout repository
       uses: actions/checkout@v4
+
     - name: Bruno - Run collection
       id: bruno_run
       shell: bash
       run: |
-        cd ${{ inputs.directory }}
-        bru run
+        {
+          cd ${{ inputs.directory }}
+          echo 'bruno_output<<EOF'
+          bru run
+          echo EOF
+        } >> "$GITHUB_ENV"
+        
+    - name: Bruno - create PR comment for results
+      if: ${{ inputs.output-type == 'pr' }}
+      uses: peter-evans/find-comment@v3
+      id: fc
+      with:
+        issue-number: ${{ github.event.pull_request.number }}
+        comment-author: 'github-actions[bot]'
+        body-includes: Build output
+
+    - name: Bruno - Create comment
+      uses: peter-evans/create-or-update-comment@v4
+      env:
+        BRUNO_OUTPUT: "Output ${{ env.bruno_output }}"
+      with:
+        comment-id: ${{ steps.fc.outputs.comment-id }}
+        issue-number: ${{ github.event.pull_request.number }}
+        body: |
+            ### :dog: Bruno output
+            ``` ${{ env.bruno_output }} ```
           
 
