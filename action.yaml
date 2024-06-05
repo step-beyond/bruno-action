@@ -34,7 +34,7 @@ runs:
 
     - name: Bruno - print to console
       shell: bash
-      run: echo ${{ env.bruno_output }}   
+      run: echo "${{ env.bruno_output }}"   
         
     - name: Bruno - create PR comment for results
       if: ${{ inputs.output-type == 'pr' }}
