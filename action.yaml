@@ -16,7 +16,7 @@ runs:
   using: "composite"
   steps:
     - name: Bruno - install
-        run: npm install -g @usebruno/cli@1.16.0
+      run: npm install -g @usebruno/cli@1.16.0
     - name: Bruno - Run collection
       id: bruno_run
       working-directory: ${{ inputs.directory }}
