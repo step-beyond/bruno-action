@@ -20,12 +20,11 @@ runs:
       shell: bash
     - name: Checkout repository
       uses: actions/checkout@v4
-    - name: Move to input directory
-      run: cd ${{ inputs.directory }}
-      shell: bash
     - name: Bruno - Run collection
       id: bruno_run
       shell: bash
-      run: bru run
+      run: |
+        cd ${{ inputs.directory }}
+        bru run
           
 
