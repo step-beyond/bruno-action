@@ -19,7 +19,7 @@ runs:
       run: npm install -g @usebruno/cli@1.16.0
       shell: bash
     - name: Checkout repository
-      use: actions/checkout@v4
+      uses: actions/checkout@v4
     - name: Move to input directory
       run: cd ${{ inputs.directory }}
       shell: bash
