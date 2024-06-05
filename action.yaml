@@ -20,6 +20,7 @@ runs:
       shell: bash
     - name: Move to input directory
       run: cd ${{ inputs.directory }}
+      shell: bash
     - name: Bruno - Run collection
       id: bruno_run
       shell: bash
