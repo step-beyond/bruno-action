@@ -18,9 +18,11 @@ runs:
     - name: Bruno - install
       run: npm install -g @usebruno/cli@1.16.0
       shell: bash
+    - name: Move to input directory
+      run: cd ${{ inputs.directory }}
     - name: Bruno - Run collection
       id: bruno_run
       shell: bash
-      run: bru run ${{ inputs.directory }} --env ${{ inputs.environment }}
+      run: bru run --env ${{ inputs.environment }}
           
 
