@@ -19,7 +19,7 @@ runs:
       run: npm install -g @usebruno/cli@1.16.0
       shell: bash
     - name: Checkout repository
-      uses: actions/checkout@v4
+      uses: actions/checkout@v7
 
     - name: Bruno - Run collection
       id: bruno_run
